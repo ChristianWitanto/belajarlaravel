@@ -17,6 +17,7 @@
                 <td>{{$item->nama_dekan}}</td>
                 <td>
                     <a href="/fakultas/{{$item->id}}/edit" class="btn btn-warning">Edit</a>
+                    <a href="/fakultas/{{$item->id}}" class="">Detail</a>
                     <form action="/fakultas/{{ $item->id }}" method="post">
                         @csrf
                         @method("DELETE")

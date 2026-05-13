@@ -1,8 +1,8 @@
 <x-layout>
     <h1>Edit Fakultas</h1>
+    <form action="/fakultas/{{$fakultas->id}}" method="POST">
     @csrf
     @method("PUT")
-    <form action="/fakultas" method="POST">
         <div class="form-group">
             <input
             name="nama_fakultas"
