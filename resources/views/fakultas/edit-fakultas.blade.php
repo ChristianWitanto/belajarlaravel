@@ -1,24 +1,99 @@
 <x-layout>
-    <h1>Edit Fakultas</h1>
-    <form action="/fakultas/{{$fakultas->id}}" method="POST">
-    @csrf
-    @method("PUT")
-        <div class="form-group">
-            <input
-            name="nama_fakultas"
-            type="text"
-            placeholder="Nama Fakultas"
-            class="form-control"
-            value="{{$fakultas->nama_fakultas}}">
+
+    <div class="container mt-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-8 col-lg-6">
+
+                <div class="card shadow border-0">
+
+                    <!-- Header -->
+                    <div class="card-header bg-warning">
+                        <h4 class="mb-0 text-dark">
+                            Edit Fakultas
+                        </h4>
+                    </div>
+
+
+                    <!-- Form -->
+                    <div class="card-body p-4">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form action="/fakultas/{{ $fakultas->id }}" method="POST">
+
+                            @csrf
+                            @method("PUT")
+
+
+                            <!-- Nama Fakultas -->
+                            <div class="mb-3">
+
+                                <label class="form-label fw-semibold">
+                                    Nama Fakultas
+                                </label>
+
+                                <input
+                                    name="nama_fakultas"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Masukkan nama fakultas"
+                                    value="{{ $fakultas->nama_fakultas }}"
+                                    >
+
+                            </div>
+
+
+                            <!-- Nama Dekan -->
+                            <div class="mb-4">
+
+                                <label class="form-label fw-semibold">
+                                    Nama Dekan
+                                </label>
+
+                                <input
+                                    name="nama_dekan"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Masukkan nama dekan"
+                                    value="{{ $fakultas->nama_dekan }}"
+                                    >
+
+                            </div>
+
+
+                            <!-- Button -->
+                            <div class="d-flex justify-content-between">
+
+                                <a href="/fakultas"
+                                   class="btn btn-outline-secondary">
+                                    Kembali
+                                </a>
+
+                                <button type="submit"
+                                        class="btn btn-warning px-4">
+                                    Update
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-        <div class="form-group">
-            <input
-            name="nama_dekan"
-            type="text"
-            placeholder="Nama Dekan"
-            class="form-control"
-            value="{{$fakultas->nama_fakultas}}">
-        </div>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-    </form>    
+
+    </div>
+
 </x-layout>
